@@ -12,7 +12,7 @@ export default class TypedSVGSymbols {
           ...compilation.fileDependencies,
         ].filter((fileName: string) => fileName.endsWith("sprite.svg"));
 
-        sprites.forEach((filePath) => {
+        sprites.forEach(filePath => {
           const domParser = new DOMParser();
           const doc = domParser.parseFromString(
             fs.readFileSync(filePath).toString(),
@@ -21,16 +21,17 @@ export default class TypedSVGSymbols {
 
           const ids = Array.from(
             doc.getElementsByTagName("symbol")
-          ).map((symbol) => symbol.getAttribute("id"));
+          ).map(symbol => symbol.getAttribute("id"));
 
           fs.writeFileSync(
             `${filePath}.d.ts`,
-            eol.lf(`
-declare const _default: string;
+            eol.lf(
+              `declare const _default: string;
 export default _default;
           
-export const symbol: ${ids.map((id) => `"${id}"`).join(" | ")};
-          `)
+export const symbol: ${ids.map(id => `"${id}"`).join(" | ")};
+`
+            )
           );
         });
       }
