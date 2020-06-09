@@ -3,7 +3,7 @@ import { DOMParser } from "xmldom";
 import fs from "fs-extra";
 import eol from "eol";
 
-export default class TypedSVGSymbols {
+export class TypedSVGWebpackPlugin {
   public apply(compiler: webpack.Compiler) {
     compiler.hooks.emit.tap(
       "CompileSvgSprite",
@@ -28,7 +28,7 @@ export default class TypedSVGSymbols {
             eol.lf(
               `declare const _default: string;
 export default _default;
-          
+
 export const symbol: ${ids.map(id => `"${id}"`).join(" | ")};
 `
             )

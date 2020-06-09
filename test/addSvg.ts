@@ -1,0 +1,3 @@
+import "./sprite.svg";
+
+sytsdf;
