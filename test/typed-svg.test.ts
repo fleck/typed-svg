@@ -3,7 +3,16 @@ import { TypedSVGWebpackPlugin } from "../src/index";
 import path from "path";
 import fs from "fs-extra";
 
-it("Should generate types deceleration", async () => {
+const svgDeclaration = path.join(__dirname, "sprite.svg.d.ts");
+
+const deleteSvgDeclaration = () => {
+  fs.removeSync(svgDeclaration);
+};
+
+beforeEach(deleteSvgDeclaration);
+afterEach(deleteSvgDeclaration);
+
+it("Should generate types declaration", async () => {
   let done: (value?: unknown) => void;
 
   const webpackFinished = new Promise(resolve => {
@@ -40,7 +49,5 @@ it("Should generate types deceleration", async () => {
 
   await webpackFinished;
 
-  expect(
-    fs.readFileSync(path.join(__dirname, "sprite.svg.d.ts")).toString()
-  ).toMatchSnapshot();
+  expect(fs.readFileSync(svgDeclaration).toString()).toMatchSnapshot();
 });
