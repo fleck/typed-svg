@@ -1,6 +1,7 @@
 import webpack from "webpack";
 import { TypedSVGWebpackPlugin } from "../src/index";
 import path from "path";
+import fs from "fs-extra";
 
 it("Should generate types deceleration", async () => {
   let done: (value?: unknown) => void;
@@ -38,4 +39,8 @@ it("Should generate types deceleration", async () => {
   );
 
   await webpackFinished;
+
+  expect(
+    fs.readFileSync(path.join(__dirname, "sprite.svg.d.ts")).toString()
+  ).toMatchSnapshot();
 });

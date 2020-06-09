@@ -1,3 +1,1 @@
 import "./sprite.svg";
-
-sytsdf;
