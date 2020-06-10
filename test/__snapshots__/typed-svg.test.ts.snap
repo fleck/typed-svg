@@ -5,6 +5,6 @@ exports[`Should generate types declaration 1`] = `
 declare const _default: string;
 export default _default;
 
-export type Symbols: \\"first\\" | \\"second\\";
+export type Symbols = \\"first\\" | \\"second\\";
 "
 `;
