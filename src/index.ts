@@ -7,9 +7,9 @@ export class TypedSVGWebpackPlugin {
     compiler.hooks.emit.tap(
       "CompileSvgSprite",
       (compilation: webpack.compilation.Compilation) => {
-        const sprites = [...compilation.fileDependencies].filter(fileName =>
-          fileName.endsWith("sprite.svg")
-        );
+        const sprites = Array.from(
+          compilation.fileDependencies
+        ).filter(fileName => fileName.endsWith("sprite.svg"));
 
         sprites.forEach(filePath => {
           const domParser = new DOMParser();
