@@ -28,7 +28,7 @@ export class TypedSVGWebpackPlugin {
 declare const _default: string;
 export default _default;
 
-export const symbol: ${ids.map(id => `"${id}"`).join(" | ")};
+export type Symbols: ${ids.map(id => `"${id}"`).join(" | ")};
 `
           );
         });
