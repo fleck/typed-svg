@@ -23,6 +23,7 @@ import { TypedSVGWebpackPlugin } from "typed-svg";
 ```
 
 ## Usage
+This plugin will compile a type for any svg that ends with the name **.sprite.svg**
 While this example is done in React, there's nothing React specific to this plugin.
 
 ```tsx
@@ -64,3 +65,6 @@ export default _default;
 
 export const symbol: "shopping-cart" | "search";
 ```
+
+## Why
+Shipping SVGs as React components is simple, but can dramatically bloat the size of JavaScript bundles. This plugin aims to make using the browsers `<svg>` and `<use>` tags safer. Without types it's all to easy to have a mismatch between the id used in your `<use>` tag and the id of the SVG symbol.
