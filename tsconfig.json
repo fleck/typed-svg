@@ -1,6 +1,7 @@
 {
   "include": ["src", "types"],
   "compilerOptions": {
+    "target": "ES2015",
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
@@ -18,7 +19,6 @@
       "*": ["src/*", "node_modules/*"]
     },
     "jsx": "react",
-    "esModuleInterop": true,
-    "downlevelIteration":true
+    "esModuleInterop": true
   }
 }
